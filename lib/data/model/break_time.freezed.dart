@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BreakTime {
 
-@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay get start;@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay get end; String? get label;
+@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? get start;@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? get end; String? get label;
 /// Create a copy of BreakTime
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $BreakTimeCopyWith<$Res>  {
   factory $BreakTimeCopyWith(BreakTime value, $Res Function(BreakTime) _then) = _$BreakTimeCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay start,@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay end, String? label
+@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? start,@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? end, String? label
 });
 
 
@@ -65,11 +65,11 @@ class _$BreakTimeCopyWithImpl<$Res>
 
 /// Create a copy of BreakTime
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? start = null,Object? end = null,Object? label = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? start = freezed,Object? end = freezed,Object? label = freezed,}) {
   return _then(_self.copyWith(
-start: null == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
-as TimeOfDay,end: null == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
-as TimeOfDay,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,end: freezed == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -155,7 +155,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end,  String? label)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end,  String? label)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BreakTime() when $default != null:
 return $default(_that.start,_that.end,_that.label);case _:
@@ -176,7 +176,7 @@ return $default(_that.start,_that.end,_that.label);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end,  String? label)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end,  String? label)  $default,) {final _that = this;
 switch (_that) {
 case _BreakTime():
 return $default(_that.start,_that.end,_that.label);case _:
@@ -196,7 +196,7 @@ return $default(_that.start,_that.end,_that.label);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end,  String? label)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end,  String? label)?  $default,) {final _that = this;
 switch (_that) {
 case _BreakTime() when $default != null:
 return $default(_that.start,_that.end,_that.label);case _:
@@ -214,8 +214,8 @@ class _BreakTime implements BreakTime {
   const _BreakTime({@JsonKey(toJson: timeToJson, fromJson: timeFromJson) required this.start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson) required this.end, this.label});
   factory _BreakTime.fromJson(Map<String, dynamic> json) => _$BreakTimeFromJson(json);
 
-@override@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay start;
-@override@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay end;
+@override@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay? start;
+@override@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay? end;
 @override final  String? label;
 
 /// Create a copy of BreakTime
@@ -251,7 +251,7 @@ abstract mixin class _$BreakTimeCopyWith<$Res> implements $BreakTimeCopyWith<$Re
   factory _$BreakTimeCopyWith(_BreakTime value, $Res Function(_BreakTime) _then) = __$BreakTimeCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay start,@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay end, String? label
+@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? start,@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? end, String? label
 });
 
 
@@ -268,11 +268,11 @@ class __$BreakTimeCopyWithImpl<$Res>
 
 /// Create a copy of BreakTime
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? start = null,Object? end = null,Object? label = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? start = freezed,Object? end = freezed,Object? label = freezed,}) {
   return _then(_BreakTime(
-start: null == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
-as TimeOfDay,end: null == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
-as TimeOfDay,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,end: freezed == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

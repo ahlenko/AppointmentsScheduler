@@ -8,8 +8,8 @@ part of 'working_hours.dart';
 
 _WorkingHours _$WorkingHoursFromJson(Map<String, dynamic> json) =>
     _WorkingHours(
-      start: timeFromJson(json['start'] as String),
-      end: timeFromJson(json['end'] as String),
+      start: timeFromJson(json['start'] as String?),
+      end: timeFromJson(json['end'] as String?),
       breaks:
           (json['breaks'] as List<dynamic>?)
               ?.map((e) => BreakTime.fromJson(e as Map<String, dynamic>))

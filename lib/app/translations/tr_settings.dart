@@ -3,10 +3,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
 mixin TrSettings {
-  static const locale = Locale('en');
+  static const locale = Locale('uk');
   static const fallbackLocale = Locale('en');
-  static List<Locale> supportedLocales = List.of([Locale('en'), Locale('ua')]);
-  static final languages = ['en', 'ua'];
+  static List<Locale> supportedLocales = List.of([Locale('en'), Locale('uk')]);
+  static final languages = ['en', 'uk'];
   static const Iterable<LocalizationsDelegate> localizationsDelegates = [
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,

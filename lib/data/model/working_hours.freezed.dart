@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$WorkingHours {
 
-@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay get start;@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay get end; List<BreakTime> get breaks;
+@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? get start;@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? get end; List<BreakTime> get breaks;
 /// Create a copy of WorkingHours
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $WorkingHoursCopyWith<$Res>  {
   factory $WorkingHoursCopyWith(WorkingHours value, $Res Function(WorkingHours) _then) = _$WorkingHoursCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay start,@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay end, List<BreakTime> breaks
+@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? start,@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? end, List<BreakTime> breaks
 });
 
 
@@ -65,11 +65,11 @@ class _$WorkingHoursCopyWithImpl<$Res>
 
 /// Create a copy of WorkingHours
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? start = null,Object? end = null,Object? breaks = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? start = freezed,Object? end = freezed,Object? breaks = null,}) {
   return _then(_self.copyWith(
-start: null == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
-as TimeOfDay,end: null == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
-as TimeOfDay,breaks: null == breaks ? _self.breaks : breaks // ignore: cast_nullable_to_non_nullable
+start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,end: freezed == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,breaks: null == breaks ? _self.breaks : breaks // ignore: cast_nullable_to_non_nullable
 as List<BreakTime>,
   ));
 }
@@ -155,7 +155,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end,  List<BreakTime> breaks)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end,  List<BreakTime> breaks)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _WorkingHours() when $default != null:
 return $default(_that.start,_that.end,_that.breaks);case _:
@@ -176,7 +176,7 @@ return $default(_that.start,_that.end,_that.breaks);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end,  List<BreakTime> breaks)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end,  List<BreakTime> breaks)  $default,) {final _that = this;
 switch (_that) {
 case _WorkingHours():
 return $default(_that.start,_that.end,_that.breaks);case _:
@@ -196,7 +196,7 @@ return $default(_that.start,_that.end,_that.breaks);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end,  List<BreakTime> breaks)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end,  List<BreakTime> breaks)?  $default,) {final _that = this;
 switch (_that) {
 case _WorkingHours() when $default != null:
 return $default(_that.start,_that.end,_that.breaks);case _:
@@ -214,8 +214,8 @@ class _WorkingHours implements WorkingHours {
   const _WorkingHours({@JsonKey(toJson: timeToJson, fromJson: timeFromJson) required this.start, @JsonKey(toJson: timeToJson, fromJson: timeFromJson) required this.end, final  List<BreakTime> breaks = const []}): _breaks = breaks;
   factory _WorkingHours.fromJson(Map<String, dynamic> json) => _$WorkingHoursFromJson(json);
 
-@override@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay start;
-@override@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay end;
+@override@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay? start;
+@override@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay? end;
  final  List<BreakTime> _breaks;
 @override@JsonKey() List<BreakTime> get breaks {
   if (_breaks is EqualUnmodifiableListView) return _breaks;
@@ -257,7 +257,7 @@ abstract mixin class _$WorkingHoursCopyWith<$Res> implements $WorkingHoursCopyWi
   factory _$WorkingHoursCopyWith(_WorkingHours value, $Res Function(_WorkingHours) _then) = __$WorkingHoursCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay start,@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay end, List<BreakTime> breaks
+@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? start,@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? end, List<BreakTime> breaks
 });
 
 
@@ -274,11 +274,11 @@ class __$WorkingHoursCopyWithImpl<$Res>
 
 /// Create a copy of WorkingHours
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? start = null,Object? end = null,Object? breaks = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? start = freezed,Object? end = freezed,Object? breaks = null,}) {
   return _then(_WorkingHours(
-start: null == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
-as TimeOfDay,end: null == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
-as TimeOfDay,breaks: null == breaks ? _self._breaks : breaks // ignore: cast_nullable_to_non_nullable
+start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,end: freezed == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
+as TimeOfDay?,breaks: null == breaks ? _self._breaks : breaks // ignore: cast_nullable_to_non_nullable
 as List<BreakTime>,
   ));
 }

@@ -9,8 +9,9 @@ part 'break_time.g.dart';
 abstract class BreakTime with _$BreakTime {
   const factory BreakTime({
     @JsonKey(toJson: timeToJson, fromJson: timeFromJson)
-    required TimeOfDay start,
-    @JsonKey(toJson: timeToJson, fromJson: timeFromJson) required TimeOfDay end,
+    required TimeOfDay? start,
+    @JsonKey(toJson: timeToJson, fromJson: timeFromJson)
+    required TimeOfDay? end,
     String? label,
   }) = _BreakTime;
 

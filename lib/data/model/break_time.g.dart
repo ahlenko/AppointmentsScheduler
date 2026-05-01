@@ -7,8 +7,8 @@ part of 'break_time.dart';
 // **************************************************************************
 
 _BreakTime _$BreakTimeFromJson(Map<String, dynamic> json) => _BreakTime(
-  start: timeFromJson(json['start'] as String),
-  end: timeFromJson(json['end'] as String),
+  start: timeFromJson(json['start'] as String?),
+  end: timeFromJson(json['end'] as String?),
   label: json['label'] as String?,
 );
 

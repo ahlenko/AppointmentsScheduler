@@ -6,5 +6,10 @@ abstract class CreateAppointmentState with _$CreateAppointmentState {
     @Default(false) bool loading,
     MasterSchedule? masterSchedule,
     AppointmentModel? createdAppointment,
+
+    String? clientNameError,
+    String? serviceError,
+    String? dateError,
+    String? timeError,
   }) = _CreateAppointmentState;
 }

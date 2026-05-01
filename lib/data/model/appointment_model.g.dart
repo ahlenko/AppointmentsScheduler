@@ -18,17 +18,18 @@ class AppointmentModelAdapter extends TypeAdapter<AppointmentModel> {
     };
     return AppointmentModel(
       id: fields[0] as String,
-      date: fields[1] as DateTime,
-      start: fields[2] as TimeOfDay,
-      end: fields[3] as TimeOfDay,
-      clientName: fields[4] as String,
+      date: fields[1] as DateTime?,
+      start: fields[2] as TimeOfDay?,
+      end: fields[3] as TimeOfDay?,
+      clientName: fields[4] as String?,
+      service: fields[5] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, AppointmentModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class AppointmentModelAdapter extends TypeAdapter<AppointmentModel> {
       ..writeByte(3)
       ..write(obj.end)
       ..writeByte(4)
-      ..write(obj.clientName);
+      ..write(obj.clientName)
+      ..writeByte(5)
+      ..write(obj.service);
   }
 
   @override
@@ -59,10 +62,11 @@ class AppointmentModelAdapter extends TypeAdapter<AppointmentModel> {
 _AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
     _AppointmentModel(
       id: json['id'] as String,
-      date: dateFromJson(json['date'] as String),
-      start: timeFromJson(json['start'] as String),
-      end: timeFromJson(json['end'] as String),
-      clientName: json['clientName'] as String,
+      date: dateFromJson(json['date'] as String?),
+      start: timeFromJson(json['start'] as String?),
+      end: timeFromJson(json['end'] as String?),
+      clientName: json['clientName'] as String?,
+      service: json['service'] as String?,
     );
 
 Map<String, dynamic> _$AppointmentModelToJson(_AppointmentModel instance) =>
@@ -72,4 +76,5 @@ Map<String, dynamic> _$AppointmentModelToJson(_AppointmentModel instance) =>
       'start': timeToJson(instance.start),
       'end': timeToJson(instance.end),
       'clientName': instance.clientName,
+      'service': instance.service,
     };
