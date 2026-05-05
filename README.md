@@ -1,16 +1,31 @@
 # appointments
+Create client appointments flutter app
 
-A new Flutter project.
+## Project description
+A simple app for managing client appointments with time slot generation based on a master’s schedule.
 
-## Getting Started
+## Main features
+* 15-minute time slot grid
+* service duration affects availability
+* handles appointments, buffers, and breaks
+* all slots are always visible
+* unavailable slots show a reason:
+    * client name
+    * not enough time
+    * break
+* slot selection highlights full service duration
+* local storage using Hive
 
-This project is a starting point for a Flutter application.
+## Getting started
+git clone <repo>
+cd appointments
+flutter pub get
+flutter run
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Possible improvements
+* add My Appointments screen
+* extract slot logic into a separate service
+* add more unit tests
+* improve UI (better explanations, visuals)
+* optimize slot generation
+* add backend or Firebase and sync
