@@ -3,16 +3,19 @@
 // Check in to version control
 
 import 'package:hive_ce/hive_ce.dart';
+import 'package:appointments/data/model/create_appointment.dart';
 import 'package:appointments/data/model/appointment_model.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
+    registerAdapter(AppointmentModelAdapter());
     registerAdapter(AppointmentModelAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
+    registerAdapter(AppointmentModelAdapter());
     registerAdapter(AppointmentModelAdapter());
   }
 }

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppointmentModel {
 
-@HiveField(0) String get id;@HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) DateTime? get date;@HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? get start;@HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? get end;@HiveField(4) String? get clientName;@HiveField(5) String? get service;
+@HiveField(0) String get id;@HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) DateTime get date;@HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay get start;@HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay get end;@HiveField(4) String get clientName;@HiveField(5) String? get service;
 /// Create a copy of AppointmentModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $AppointmentModelCopyWith<$Res>  {
   factory $AppointmentModelCopyWith(AppointmentModel value, $Res Function(AppointmentModel) _then) = _$AppointmentModelCopyWithImpl;
 @useResult
 $Res call({
-@HiveField(0) String id,@HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) DateTime? date,@HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? start,@HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? end,@HiveField(4) String? clientName,@HiveField(5) String? service
+@HiveField(0) String id,@HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) DateTime date,@HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay start,@HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay end,@HiveField(4) String clientName,@HiveField(5) String? service
 });
 
 
@@ -65,14 +65,14 @@ class _$AppointmentModelCopyWithImpl<$Res>
 
 /// Create a copy of AppointmentModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? date = freezed,Object? start = freezed,Object? end = freezed,Object? clientName = freezed,Object? service = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? date = null,Object? start = null,Object? end = null,Object? clientName = null,Object? service = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime?,start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
-as TimeOfDay?,end: freezed == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
-as TimeOfDay?,clientName: freezed == clientName ? _self.clientName : clientName // ignore: cast_nullable_to_non_nullable
-as String?,service: freezed == service ? _self.service : service // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as DateTime,start: null == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
+as TimeOfDay,end: null == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
+as TimeOfDay,clientName: null == clientName ? _self.clientName : clientName // ignore: cast_nullable_to_non_nullable
+as String,service: freezed == service ? _self.service : service // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -158,7 +158,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  String id, @HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson)  DateTime? date, @HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end, @HiveField(4)  String? clientName, @HiveField(5)  String? service)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  String id, @HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson)  DateTime date, @HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end, @HiveField(4)  String clientName, @HiveField(5)  String? service)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AppointmentModel() when $default != null:
 return $default(_that.id,_that.date,_that.start,_that.end,_that.clientName,_that.service);case _:
@@ -179,7 +179,7 @@ return $default(_that.id,_that.date,_that.start,_that.end,_that.clientName,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  String id, @HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson)  DateTime? date, @HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end, @HiveField(4)  String? clientName, @HiveField(5)  String? service)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  String id, @HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson)  DateTime date, @HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end, @HiveField(4)  String clientName, @HiveField(5)  String? service)  $default,) {final _that = this;
 switch (_that) {
 case _AppointmentModel():
 return $default(_that.id,_that.date,_that.start,_that.end,_that.clientName,_that.service);case _:
@@ -199,7 +199,7 @@ return $default(_that.id,_that.date,_that.start,_that.end,_that.clientName,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  String id, @HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson)  DateTime? date, @HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? start, @HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay? end, @HiveField(4)  String? clientName, @HiveField(5)  String? service)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  String id, @HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson)  DateTime date, @HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay start, @HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson)  TimeOfDay end, @HiveField(4)  String clientName, @HiveField(5)  String? service)?  $default,) {final _that = this;
 switch (_that) {
 case _AppointmentModel() when $default != null:
 return $default(_that.id,_that.date,_that.start,_that.end,_that.clientName,_that.service);case _:
@@ -214,14 +214,14 @@ return $default(_that.id,_that.date,_that.start,_that.end,_that.clientName,_that
 @JsonSerializable()
 
 class _AppointmentModel implements AppointmentModel {
-  const _AppointmentModel({@HiveField(0) required this.id, @HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) this.date, @HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) this.start, @HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) this.end, @HiveField(4) this.clientName, @HiveField(5) this.service});
+  const _AppointmentModel({@HiveField(0) required this.id, @HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) required this.date, @HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) required this.start, @HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) required this.end, @HiveField(4) required this.clientName, @HiveField(5) required this.service});
   factory _AppointmentModel.fromJson(Map<String, dynamic> json) => _$AppointmentModelFromJson(json);
 
 @override@HiveField(0) final  String id;
-@override@HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) final  DateTime? date;
-@override@HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay? start;
-@override@HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay? end;
-@override@HiveField(4) final  String? clientName;
+@override@HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) final  DateTime date;
+@override@HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay start;
+@override@HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) final  TimeOfDay end;
+@override@HiveField(4) final  String clientName;
 @override@HiveField(5) final  String? service;
 
 /// Create a copy of AppointmentModel
@@ -257,7 +257,7 @@ abstract mixin class _$AppointmentModelCopyWith<$Res> implements $AppointmentMod
   factory _$AppointmentModelCopyWith(_AppointmentModel value, $Res Function(_AppointmentModel) _then) = __$AppointmentModelCopyWithImpl;
 @override @useResult
 $Res call({
-@HiveField(0) String id,@HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) DateTime? date,@HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? start,@HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay? end,@HiveField(4) String? clientName,@HiveField(5) String? service
+@HiveField(0) String id,@HiveField(1)@JsonKey(toJson: dateToJson, fromJson: dateFromJson) DateTime date,@HiveField(2)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay start,@HiveField(3)@JsonKey(toJson: timeToJson, fromJson: timeFromJson) TimeOfDay end,@HiveField(4) String clientName,@HiveField(5) String? service
 });
 
 
@@ -274,14 +274,14 @@ class __$AppointmentModelCopyWithImpl<$Res>
 
 /// Create a copy of AppointmentModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? date = freezed,Object? start = freezed,Object? end = freezed,Object? clientName = freezed,Object? service = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? date = null,Object? start = null,Object? end = null,Object? clientName = null,Object? service = freezed,}) {
   return _then(_AppointmentModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime?,start: freezed == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
-as TimeOfDay?,end: freezed == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
-as TimeOfDay?,clientName: freezed == clientName ? _self.clientName : clientName // ignore: cast_nullable_to_non_nullable
-as String?,service: freezed == service ? _self.service : service // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as DateTime,start: null == start ? _self.start : start // ignore: cast_nullable_to_non_nullable
+as TimeOfDay,end: null == end ? _self.end : end // ignore: cast_nullable_to_non_nullable
+as TimeOfDay,clientName: null == clientName ? _self.clientName : clientName // ignore: cast_nullable_to_non_nullable
+as String,service: freezed == service ? _self.service : service // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

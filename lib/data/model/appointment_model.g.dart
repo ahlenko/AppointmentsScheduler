@@ -18,10 +18,10 @@ class AppointmentModelAdapter extends TypeAdapter<AppointmentModel> {
     };
     return AppointmentModel(
       id: fields[0] as String,
-      date: fields[1] as DateTime?,
-      start: fields[2] as TimeOfDay?,
-      end: fields[3] as TimeOfDay?,
-      clientName: fields[4] as String?,
+      date: fields[1] as DateTime,
+      start: fields[2] as TimeOfDay,
+      end: fields[3] as TimeOfDay,
+      clientName: fields[4] as String,
       service: fields[5] as String?,
     );
   }
@@ -62,10 +62,10 @@ class AppointmentModelAdapter extends TypeAdapter<AppointmentModel> {
 _AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
     _AppointmentModel(
       id: json['id'] as String,
-      date: dateFromJson(json['date'] as String?),
-      start: timeFromJson(json['start'] as String?),
-      end: timeFromJson(json['end'] as String?),
-      clientName: json['clientName'] as String?,
+      date: dateFromJson(json['date'] as String),
+      start: timeFromJson(json['start'] as String),
+      end: timeFromJson(json['end'] as String),
+      clientName: json['clientName'] as String,
       service: json['service'] as String?,
     );
 

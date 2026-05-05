@@ -5,8 +5,8 @@ abstract class CreateAppointmentState with _$CreateAppointmentState {
   const factory CreateAppointmentState({
     @Default(false) bool loading,
     MasterSchedule? masterSchedule,
-    AppointmentModel? createdAppointment,
-
+    CreateAppointment? createdAppointment,
+    @Default([]) List<SlotModel> masterSlots,
     String? clientNameError,
     String? serviceError,
     String? dateError,

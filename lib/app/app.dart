@@ -34,7 +34,7 @@ class _AppointmentsAppState extends State<AppointmentsApp> {
             initialRoute: Routes.createAppointment,
             navigatorObservers: [customRouterObserver],
 
-            locale: Get.locale,
+            locale: Get.deviceLocale,
             translations: Messages(),
             fallbackLocale: TrSettings.fallbackLocale,
             supportedLocales: TrSettings.supportedLocales,

@@ -10,9 +10,8 @@ part 'working_hours.g.dart';
 abstract class WorkingHours with _$WorkingHours {
   const factory WorkingHours({
     @JsonKey(toJson: timeToJson, fromJson: timeFromJson)
-    required TimeOfDay? start,
-    @JsonKey(toJson: timeToJson, fromJson: timeFromJson)
-    required TimeOfDay? end,
+    required TimeOfDay start,
+    @JsonKey(toJson: timeToJson, fromJson: timeFromJson) required TimeOfDay end,
     @Default([]) List<BreakTime> breaks,
   }) = _WorkingHours;
 

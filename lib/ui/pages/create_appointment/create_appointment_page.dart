@@ -1,12 +1,13 @@
 import 'package:appointments/app/di/di.dart';
 import 'package:appointments/app/extensions/context_extension.dart';
 import 'package:appointments/app/translations/tr_strings.dart';
-import 'package:appointments/data/model/service_model.dart';
 import 'package:appointments/ui/components/client_name_field_widget.dart';
 import 'package:appointments/ui/components/date_picker_widget.dart';
 import 'package:appointments/ui/components/service_picker_widget.dart';
 import 'package:appointments/ui/components/slots_grid_widget.dart';
+import 'package:appointments/ui/dialogs/appoitment_created_bottom_sheet.dart';
 import 'package:appointments/ui/pages/create_appointment/create_appointment_cubit.dart';
+import 'package:appointments/ui/theme/colors.dart';
 import 'package:appointments/ui/theme/fonts/types.dart';
 import 'package:appointments/util/screen_util.dart';
 import 'package:flutter/material.dart';
@@ -36,50 +37,100 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
             ),
             title: Text(Strings.newAppointment.tr),
           ),
-          body: SafeArea(
-            child: Column(
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        spacerVertical(16),
-                        ClientNameFieldWidget(
-                          errorText: state.clientNameError,
-                          clientNameController: _cubit.clientNameController,
+          body: state.loading
+              ? Center(child: CircularProgressIndicator())
+              : Stack(
+                  children: [
+                    Positioned.fill(
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            spacerVertical(16),
+                            ClientNameFieldWidget(
+                              focusNode: _cubit.clientNameNode,
+                              errorText: state.clientNameError,
+                              clientNameController: _cubit.clientNameController,
+                            ),
+                            spacerVertical(16),
+                            ServicePickerWidget(
+                              selectedService: state.masterSchedule?.services
+                                  .where(
+                                    (s) =>
+                                        s.id ==
+                                        state.createdAppointment?.service,
+                                  )
+                                  .firstOrNull,
+                              services: state.masterSchedule?.services ?? [],
+                              onServiceSelected: (service) {
+                                _cubit.setAppointmentService(service.id);
+                              },
+                              errorText: state.serviceError,
+                            ),
+                            spacerVertical(16),
+                            DatePickerWidget(
+                              errorText: state.dateError,
+                              appointment: state.createdAppointment!,
+                              onDateSelected: _cubit.setAppointmentDate,
+                            ),
+                            spacerVertical(16),
+                            SlotsGridWidget(
+                              errorText: state.timeError,
+                              slots: state.masterSlots,
+                              onSlotSelected: _cubit.onSlotSelected,
+                              appointment: state.createdAppointment!,
+                              schedule: state.masterSchedule!,
+                            ),
+                            spacerVertical(
+                              20 +
+                                  (context.bottomSafe == 0
+                                      ? 12
+                                      : context.bottomSafe),
+                            ),
+                          ],
                         ),
-                        spacerVertical(16),
-                        ServicePickerWidget(
-                          selectedService: state.masterSchedule?.services
-                              .where(
-                                (s) =>
-                                    s.id == state.createdAppointment?.service,
-                              )
-                              .firstOrNull,
-                          services: state.masterSchedule?.services ?? [],
-                          onServiceSelected: (service) {
-                            _cubit.setAppointmentService(service.id);
-                          },
-                          errorText: state.serviceError,
-                        ),
-                        spacerVertical(16),
-                        DatePickerWidget(errorText: state.dateError),
-                        spacerVertical(16),
-                        SlotsGridWidget(errorText: state.timeError),
-                      ],
+                      ),
                     ),
-                  ),
+                    Positioned(
+                      left: 16.w,
+                      right: 16.w,
+                      bottom: context.bottomSafe == 0
+                          ? 12.h
+                          : context.bottomSafe,
+                      child: SizedBox(
+                        height: 45.h,
+                        child: FilledButton(
+                          onPressed: () => _cubit.createAppointment(
+                            (appointment) => showModalBottomSheet(
+                              context: context,
+                              builder: (context) =>
+                                  AppoitmentCreatedBottomSheet(
+                                    services:
+                                        state.masterSchedule?.services ?? [],
+                                    appointmentModel: appointment,
+                                  ),
+                            ),
+                          ),
+
+                          style: FilledButton.styleFrom(
+                            backgroundColor: AppColors.purple,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                          ),
+
+                          child: Text(
+                            Strings.confirmAppointment.tr,
+                            style: Types.roboto16Medium.copyWith(
+                              color: AppColors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                FilledButton(
-                  onPressed: _cubit.createAppointment,
-                  child: Text(Strings.confirmAppointment.tr),
-                ),
-                SizedBox(height: context.bottomSafe == 0 ? 12.h : 0.h),
-              ],
-            ),
-          ),
         );
       },
     );

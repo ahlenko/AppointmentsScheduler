@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateAppointmentState {
 
- bool get loading; MasterSchedule? get masterSchedule; AppointmentModel? get createdAppointment; String? get clientNameError; String? get serviceError; String? get dateError; String? get timeError;
+ bool get loading; MasterSchedule? get masterSchedule; CreateAppointment? get createdAppointment; List<SlotModel> get masterSlots; String? get clientNameError; String? get serviceError; String? get dateError; String? get timeError;
 /// Create a copy of CreateAppointmentState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $CreateAppointmentStateCopyWith<CreateAppointmentState> get copyWith => _$Create
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAppointmentState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.masterSchedule, masterSchedule) || other.masterSchedule == masterSchedule)&&(identical(other.createdAppointment, createdAppointment) || other.createdAppointment == createdAppointment)&&(identical(other.clientNameError, clientNameError) || other.clientNameError == clientNameError)&&(identical(other.serviceError, serviceError) || other.serviceError == serviceError)&&(identical(other.dateError, dateError) || other.dateError == dateError)&&(identical(other.timeError, timeError) || other.timeError == timeError));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAppointmentState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.masterSchedule, masterSchedule) || other.masterSchedule == masterSchedule)&&(identical(other.createdAppointment, createdAppointment) || other.createdAppointment == createdAppointment)&&const DeepCollectionEquality().equals(other.masterSlots, masterSlots)&&(identical(other.clientNameError, clientNameError) || other.clientNameError == clientNameError)&&(identical(other.serviceError, serviceError) || other.serviceError == serviceError)&&(identical(other.dateError, dateError) || other.dateError == dateError)&&(identical(other.timeError, timeError) || other.timeError == timeError));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loading,masterSchedule,createdAppointment,clientNameError,serviceError,dateError,timeError);
+int get hashCode => Object.hash(runtimeType,loading,masterSchedule,createdAppointment,const DeepCollectionEquality().hash(masterSlots),clientNameError,serviceError,dateError,timeError);
 
 @override
 String toString() {
-  return 'CreateAppointmentState(loading: $loading, masterSchedule: $masterSchedule, createdAppointment: $createdAppointment, clientNameError: $clientNameError, serviceError: $serviceError, dateError: $dateError, timeError: $timeError)';
+  return 'CreateAppointmentState(loading: $loading, masterSchedule: $masterSchedule, createdAppointment: $createdAppointment, masterSlots: $masterSlots, clientNameError: $clientNameError, serviceError: $serviceError, dateError: $dateError, timeError: $timeError)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $CreateAppointmentStateCopyWith<$Res>  {
   factory $CreateAppointmentStateCopyWith(CreateAppointmentState value, $Res Function(CreateAppointmentState) _then) = _$CreateAppointmentStateCopyWithImpl;
 @useResult
 $Res call({
- bool loading, MasterSchedule? masterSchedule, AppointmentModel? createdAppointment, String? clientNameError, String? serviceError, String? dateError, String? timeError
+ bool loading, MasterSchedule? masterSchedule, CreateAppointment? createdAppointment, List<SlotModel> masterSlots, String? clientNameError, String? serviceError, String? dateError, String? timeError
 });
 
 
-$MasterScheduleCopyWith<$Res>? get masterSchedule;$AppointmentModelCopyWith<$Res>? get createdAppointment;
+$MasterScheduleCopyWith<$Res>? get masterSchedule;$CreateAppointmentCopyWith<$Res>? get createdAppointment;
 
 }
 /// @nodoc
@@ -62,12 +62,13 @@ class _$CreateAppointmentStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateAppointmentState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? masterSchedule = freezed,Object? createdAppointment = freezed,Object? clientNameError = freezed,Object? serviceError = freezed,Object? dateError = freezed,Object? timeError = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? masterSchedule = freezed,Object? createdAppointment = freezed,Object? masterSlots = null,Object? clientNameError = freezed,Object? serviceError = freezed,Object? dateError = freezed,Object? timeError = freezed,}) {
   return _then(_self.copyWith(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
 as bool,masterSchedule: freezed == masterSchedule ? _self.masterSchedule : masterSchedule // ignore: cast_nullable_to_non_nullable
 as MasterSchedule?,createdAppointment: freezed == createdAppointment ? _self.createdAppointment : createdAppointment // ignore: cast_nullable_to_non_nullable
-as AppointmentModel?,clientNameError: freezed == clientNameError ? _self.clientNameError : clientNameError // ignore: cast_nullable_to_non_nullable
+as CreateAppointment?,masterSlots: null == masterSlots ? _self.masterSlots : masterSlots // ignore: cast_nullable_to_non_nullable
+as List<SlotModel>,clientNameError: freezed == clientNameError ? _self.clientNameError : clientNameError // ignore: cast_nullable_to_non_nullable
 as String?,serviceError: freezed == serviceError ? _self.serviceError : serviceError // ignore: cast_nullable_to_non_nullable
 as String?,dateError: freezed == dateError ? _self.dateError : dateError // ignore: cast_nullable_to_non_nullable
 as String?,timeError: freezed == timeError ? _self.timeError : timeError // ignore: cast_nullable_to_non_nullable
@@ -90,12 +91,12 @@ $MasterScheduleCopyWith<$Res>? get masterSchedule {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$AppointmentModelCopyWith<$Res>? get createdAppointment {
+$CreateAppointmentCopyWith<$Res>? get createdAppointment {
     if (_self.createdAppointment == null) {
     return null;
   }
 
-  return $AppointmentModelCopyWith<$Res>(_self.createdAppointment!, (value) {
+  return $CreateAppointmentCopyWith<$Res>(_self.createdAppointment!, (value) {
     return _then(_self.copyWith(createdAppointment: value));
   });
 }
@@ -180,10 +181,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  MasterSchedule? masterSchedule,  AppointmentModel? createdAppointment,  String? clientNameError,  String? serviceError,  String? dateError,  String? timeError)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  MasterSchedule? masterSchedule,  CreateAppointment? createdAppointment,  List<SlotModel> masterSlots,  String? clientNameError,  String? serviceError,  String? dateError,  String? timeError)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateAppointmentState() when $default != null:
-return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_that.clientNameError,_that.serviceError,_that.dateError,_that.timeError);case _:
+return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_that.masterSlots,_that.clientNameError,_that.serviceError,_that.dateError,_that.timeError);case _:
   return orElse();
 
 }
@@ -201,10 +202,10 @@ return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  MasterSchedule? masterSchedule,  AppointmentModel? createdAppointment,  String? clientNameError,  String? serviceError,  String? dateError,  String? timeError)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  MasterSchedule? masterSchedule,  CreateAppointment? createdAppointment,  List<SlotModel> masterSlots,  String? clientNameError,  String? serviceError,  String? dateError,  String? timeError)  $default,) {final _that = this;
 switch (_that) {
 case _CreateAppointmentState():
-return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_that.clientNameError,_that.serviceError,_that.dateError,_that.timeError);case _:
+return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_that.masterSlots,_that.clientNameError,_that.serviceError,_that.dateError,_that.timeError);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -221,10 +222,10 @@ return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  MasterSchedule? masterSchedule,  AppointmentModel? createdAppointment,  String? clientNameError,  String? serviceError,  String? dateError,  String? timeError)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  MasterSchedule? masterSchedule,  CreateAppointment? createdAppointment,  List<SlotModel> masterSlots,  String? clientNameError,  String? serviceError,  String? dateError,  String? timeError)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateAppointmentState() when $default != null:
-return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_that.clientNameError,_that.serviceError,_that.dateError,_that.timeError);case _:
+return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_that.masterSlots,_that.clientNameError,_that.serviceError,_that.dateError,_that.timeError);case _:
   return null;
 
 }
@@ -236,12 +237,19 @@ return $default(_that.loading,_that.masterSchedule,_that.createdAppointment,_tha
 
 
 class _CreateAppointmentState implements CreateAppointmentState {
-  const _CreateAppointmentState({this.loading = false, this.masterSchedule, this.createdAppointment, this.clientNameError, this.serviceError, this.dateError, this.timeError});
+  const _CreateAppointmentState({this.loading = false, this.masterSchedule, this.createdAppointment, final  List<SlotModel> masterSlots = const [], this.clientNameError, this.serviceError, this.dateError, this.timeError}): _masterSlots = masterSlots;
   
 
 @override@JsonKey() final  bool loading;
 @override final  MasterSchedule? masterSchedule;
-@override final  AppointmentModel? createdAppointment;
+@override final  CreateAppointment? createdAppointment;
+ final  List<SlotModel> _masterSlots;
+@override@JsonKey() List<SlotModel> get masterSlots {
+  if (_masterSlots is EqualUnmodifiableListView) return _masterSlots;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_masterSlots);
+}
+
 @override final  String? clientNameError;
 @override final  String? serviceError;
 @override final  String? dateError;
@@ -257,16 +265,16 @@ _$CreateAppointmentStateCopyWith<_CreateAppointmentState> get copyWith => __$Cre
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAppointmentState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.masterSchedule, masterSchedule) || other.masterSchedule == masterSchedule)&&(identical(other.createdAppointment, createdAppointment) || other.createdAppointment == createdAppointment)&&(identical(other.clientNameError, clientNameError) || other.clientNameError == clientNameError)&&(identical(other.serviceError, serviceError) || other.serviceError == serviceError)&&(identical(other.dateError, dateError) || other.dateError == dateError)&&(identical(other.timeError, timeError) || other.timeError == timeError));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAppointmentState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.masterSchedule, masterSchedule) || other.masterSchedule == masterSchedule)&&(identical(other.createdAppointment, createdAppointment) || other.createdAppointment == createdAppointment)&&const DeepCollectionEquality().equals(other._masterSlots, _masterSlots)&&(identical(other.clientNameError, clientNameError) || other.clientNameError == clientNameError)&&(identical(other.serviceError, serviceError) || other.serviceError == serviceError)&&(identical(other.dateError, dateError) || other.dateError == dateError)&&(identical(other.timeError, timeError) || other.timeError == timeError));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loading,masterSchedule,createdAppointment,clientNameError,serviceError,dateError,timeError);
+int get hashCode => Object.hash(runtimeType,loading,masterSchedule,createdAppointment,const DeepCollectionEquality().hash(_masterSlots),clientNameError,serviceError,dateError,timeError);
 
 @override
 String toString() {
-  return 'CreateAppointmentState(loading: $loading, masterSchedule: $masterSchedule, createdAppointment: $createdAppointment, clientNameError: $clientNameError, serviceError: $serviceError, dateError: $dateError, timeError: $timeError)';
+  return 'CreateAppointmentState(loading: $loading, masterSchedule: $masterSchedule, createdAppointment: $createdAppointment, masterSlots: $masterSlots, clientNameError: $clientNameError, serviceError: $serviceError, dateError: $dateError, timeError: $timeError)';
 }
 
 
@@ -277,11 +285,11 @@ abstract mixin class _$CreateAppointmentStateCopyWith<$Res> implements $CreateAp
   factory _$CreateAppointmentStateCopyWith(_CreateAppointmentState value, $Res Function(_CreateAppointmentState) _then) = __$CreateAppointmentStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool loading, MasterSchedule? masterSchedule, AppointmentModel? createdAppointment, String? clientNameError, String? serviceError, String? dateError, String? timeError
+ bool loading, MasterSchedule? masterSchedule, CreateAppointment? createdAppointment, List<SlotModel> masterSlots, String? clientNameError, String? serviceError, String? dateError, String? timeError
 });
 
 
-@override $MasterScheduleCopyWith<$Res>? get masterSchedule;@override $AppointmentModelCopyWith<$Res>? get createdAppointment;
+@override $MasterScheduleCopyWith<$Res>? get masterSchedule;@override $CreateAppointmentCopyWith<$Res>? get createdAppointment;
 
 }
 /// @nodoc
@@ -294,12 +302,13 @@ class __$CreateAppointmentStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateAppointmentState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? masterSchedule = freezed,Object? createdAppointment = freezed,Object? clientNameError = freezed,Object? serviceError = freezed,Object? dateError = freezed,Object? timeError = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? masterSchedule = freezed,Object? createdAppointment = freezed,Object? masterSlots = null,Object? clientNameError = freezed,Object? serviceError = freezed,Object? dateError = freezed,Object? timeError = freezed,}) {
   return _then(_CreateAppointmentState(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
 as bool,masterSchedule: freezed == masterSchedule ? _self.masterSchedule : masterSchedule // ignore: cast_nullable_to_non_nullable
 as MasterSchedule?,createdAppointment: freezed == createdAppointment ? _self.createdAppointment : createdAppointment // ignore: cast_nullable_to_non_nullable
-as AppointmentModel?,clientNameError: freezed == clientNameError ? _self.clientNameError : clientNameError // ignore: cast_nullable_to_non_nullable
+as CreateAppointment?,masterSlots: null == masterSlots ? _self._masterSlots : masterSlots // ignore: cast_nullable_to_non_nullable
+as List<SlotModel>,clientNameError: freezed == clientNameError ? _self.clientNameError : clientNameError // ignore: cast_nullable_to_non_nullable
 as String?,serviceError: freezed == serviceError ? _self.serviceError : serviceError // ignore: cast_nullable_to_non_nullable
 as String?,dateError: freezed == dateError ? _self.dateError : dateError // ignore: cast_nullable_to_non_nullable
 as String?,timeError: freezed == timeError ? _self.timeError : timeError // ignore: cast_nullable_to_non_nullable
@@ -323,12 +332,12 @@ $MasterScheduleCopyWith<$Res>? get masterSchedule {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$AppointmentModelCopyWith<$Res>? get createdAppointment {
+$CreateAppointmentCopyWith<$Res>? get createdAppointment {
     if (_self.createdAppointment == null) {
     return null;
   }
 
-  return $AppointmentModelCopyWith<$Res>(_self.createdAppointment!, (value) {
+  return $CreateAppointmentCopyWith<$Res>(_self.createdAppointment!, (value) {
     return _then(_self.copyWith(createdAppointment: value));
   });
 }

@@ -15,15 +15,15 @@ abstract class AppointmentModel with _$AppointmentModel {
     @HiveField(0) required String id,
     @HiveField(1)
     @JsonKey(toJson: dateToJson, fromJson: dateFromJson)
-    DateTime? date,
+    required DateTime date,
     @HiveField(2)
     @JsonKey(toJson: timeToJson, fromJson: timeFromJson)
-    TimeOfDay? start,
+    required TimeOfDay start,
     @HiveField(3)
     @JsonKey(toJson: timeToJson, fromJson: timeFromJson)
-    TimeOfDay? end,
-    @HiveField(4) String? clientName,
-    @HiveField(5) String? service,
+    required TimeOfDay end,
+    @HiveField(4) required String clientName,
+    @HiveField(5) required String? service,
   }) = _AppointmentModel;
 
   factory AppointmentModel.fromJson(Map<String, dynamic> json) =>

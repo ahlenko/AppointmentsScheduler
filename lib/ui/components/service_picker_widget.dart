@@ -29,19 +29,41 @@ class ServicePickerWidget extends StatelessWidget {
         DropdownButtonFormField<ServiceModel?>(
           value: selectedService,
           isExpanded: true,
+
           decoration: InputDecoration(
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
             contentPadding: EdgeInsets.symmetric(
               horizontal: 12.w,
               vertical: 10.h,
             ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: BorderSide(color: AppColors.purple, width: 2.w),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: BorderSide(color: AppColors.purple),
+            ),
           ),
+
           hint: Text(Strings.pleaseSelectAService.tr),
           items: services
               .map(
                 (service) => DropdownMenuItem<ServiceModel?>(
                   value: service,
-                  child: Text(service.name),
+
+                  child: RichText(
+                    text: TextSpan(
+                      text: service.name,
+                      style: Types.roboto16Medium,
+                      children: [
+                        TextSpan(
+                          text:
+                              "  ${service.durationMinutes} ${Strings.min.tr}",
+                          style: Types.roboto12Regular.copyWith(height: 1),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               )
               .toList(),

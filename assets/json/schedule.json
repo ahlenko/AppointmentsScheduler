@@ -36,9 +36,9 @@
   "appointments": [
     {
       "id": "a1",
-      "date": "2026-04-28",
-      "start": "11:00",
-      "end": "12:00",
+      "date": "2026-05-05",
+      "start": "12:00",
+      "end": "13:00",
       "services": "s1",
       "clientName": "Олена"
     },
